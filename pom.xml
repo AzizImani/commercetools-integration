@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ct.firsthand</groupId>
+  <artifactId>commercetools-integration</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>commercetools-integration</name>
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+
+    <commercetools.version>14.5.0</commercetools.version>
+    <java.version>21</java.version>
+    <slf4j.version>1.7.36</slf4j.version>
+    <logback.version>1.2.10</logback.version>
+    <okhttp.version>4.12.0</okhttp.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>maven-central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+      <id>atlassian</id>
+      <url>https://packages.atlassian.com/maven-3rdparty</url>
+    </repository>
+  </repositories>
+
+  <dependencyManagement>
+    <!--dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>5.7.0</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies-->
+  </dependencyManagement>
+
+  <dependencies>
+
+    <!-- Commercetools SDK -->
+    <dependency>
+      <groupId>com.commercetools.sdk</groupId>
+      <artifactId>commercetools-http-client</artifactId>
+      <version>${commercetools.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.commercetools.sdk</groupId>
+      <artifactId>commercetools-sdk-java-api</artifactId>
+      <version>${commercetools.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.commercetools.sdk</groupId>
+      <artifactId>commercetools-graphql-api</artifactId>
+      <version>${commercetools.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.commercetools.sdk</groupId>
+      <artifactId>commercetools-sdk-java-importapi</artifactId>
+      <version>${commercetools.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.commercetools.sdk</groupId>
+      <artifactId>commercetools-sdk-java-ml</artifactId>
+      <version>${commercetools.version}</version>
+    </dependency>
+
+    <!-- OkHttp3 dependency - REQUIRED for CommerceTools SDK -->
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>${okhttp.version}</version>
+    </dependency>
+
+    <!-- SLF4J Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <!-- Logback for Logging -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
+    </dependency>
+
+    <!-- JSON Libraries -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20200518</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.json</groupId>
+      <artifactId>javax.json-api</artifactId>
+      <version>1.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.json</artifactId>
+      <version>1.1.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>6.0.0-RC2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M5</version>
+          <configuration>
+            <useModulePath>false</useModulePath>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.11.0</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
